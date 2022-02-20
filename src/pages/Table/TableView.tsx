@@ -9,7 +9,8 @@ import { SOptions } from 'components/Soptions/styled'
 import CIcon from 'components/Icon/Icon'
 
 const TableView = () => {
-    const { state, getUsers, updateUserStatus } = useUsers()
+    const { state, updateUserStatus } = useUsers()
+    const [data, setData] = React.useState(state.users)
 
     const statusOptions = React.useMemo(
         () =>
@@ -20,89 +21,78 @@ const TableView = () => {
         []
     );
 
-    // const onStatusChange = React.useCallback((id, status) =>
-    //     () => {
-    //         console.log('test')
-    //         updateUserStatus({ userId: id, value: status.value })
-    //     }, [updateUserStatus]
-    // )
     const onStatusChange = (id, status) => {
-        updateUserStatus({ userId: id, statusId: status.value })
+        updateUserStatus({ userId: id, statusId: status.value as number })
     }
 
-
-
     React.useEffect(() => {
-        getUsers()
-    }, [state.users.users])
+        setData(state.users)
+    }, [state.users])
 
-    const usersData = state.users.users
-
-    const columns =
-        [
-            {
-                title: 'Candidate',
-                dataIndex: 'candidate',
-                render: (_, record) => <Link to={`/details/${record.key}`}>{record.first_name + ' ' + record.last_name}</Link>
-            },
-            {
-                title: 'Contant',
-                dataIndex: 'contact',
-                render: (_, record) => record.phone_number
-            },
-            {
-                title: 'Experience',
-                dataIndex: 'experience',
-            },
-            {
-                title: 'Skills',
-                dataIndex: 'skills',
-                render: (_, record) => record.skills.map(skill => {
-                    return (
-                        <div>{skill.skill_name}</div>
-                    )
-                })
-            },
-            {
-                title: 'Salary Range',
-                dataIndex: 'salary_range',
-            },
-            {
-                title: 'Status',
-                dataIndex: 'status',
-                render: (_, record) => {
-                    return (
-                        <StatusSelectContainer className={`status-select ${record?.status?.status_type}`}>
-                            <SSelect
-                                style={{ width: 152 }}
-                                placeholder="Search to Select"
-                                optionFilterProp="label"
-                                labelInValue={true}
-                                defaultValue={
-                                    {
-                                        value: record?.status?.status_id,
-                                        label: record?.status?.status_name,
-                                    }
+    const columns = [
+        {
+            title: 'Candidate',
+            dataIndex: 'candidate',
+            render: (_, record) => <Link to={`/details/${record.key}`}>{record.first_name + ' ' + record.last_name}</Link>
+        },
+        {
+            title: 'Contant',
+            dataIndex: 'contact',
+            render: (_, record) => record.phone_number
+        },
+        {
+            title: 'Experience',
+            dataIndex: 'experience',
+        },
+        {
+            title: 'Skills',
+            dataIndex: 'skills',
+            render: (_, record) => record.skills.map(skill => {
+                return (
+                    <div>{skill.skill_name}</div>
+                )
+            })
+        },
+        {
+            title: 'Salary Range',
+            dataIndex: 'salary_range',
+        },
+        {
+            title: 'Status',
+            dataIndex: 'status',
+            render: (_, record) => {
+                return (
+                    <StatusSelectContainer className={`status-select ${record?.status?.status_type}`}>
+                        <SSelect
+                            style={{ width: 152 }}
+                            placeholder="Search to Select"
+                            optionFilterProp="label"
+                            labelInValue={true}
+                            defaultValue={
+                                {
+                                    value: record?.status?.status_id,
+                                    label: record?.status?.status_name,
                                 }
-                                onChange={(status) => onStatusChange(record?.key, status)}
-                                options={statusOptions}
-                                suffixIcon={<CIcon filename='selectDropdown' />}
-                                dropdownRender={(menu) => {
-                                    return <SOptions>{menu}</SOptions>;
-                                }}
-                            />
-                        </StatusSelectContainer>
-                    )
-                }
-            },
-        ]
+                            }
+                            onChange={(status) => onStatusChange(record?.key, status)}
+                            options={statusOptions}
+                            suffixIcon={<CIcon filename='selectDropdown' />}
+                            dropdownRender={(menu) => {
+                                return <SOptions>{menu}</SOptions>;
+                            }}
+                        />
+                    </StatusSelectContainer>
+                )
+            }
+        },
+    ]
 
     return (
         <S.Wrapper>
             <STable
                 pagination={false}
                 columns={columns}
-                dataSource={usersData}
+                dataSource={data}
             />
         </S.Wrapper>
     )
