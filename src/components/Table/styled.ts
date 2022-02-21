@@ -35,6 +35,9 @@ export const STable = styled(Table)`
         padding: 10px 32px;
       }
     }
+    a {
+      color: inherit;
+    }
     tbody {
       tr {
         &:last-child {

@@ -1,11 +1,11 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   width: 100%;
-  height: 100vh;
+  height: calc(100vh-80px);
   display: flex;
   justify-content: center;
-`;
+`
 
 export const LoginContainer = styled.div`
   width: 392px;
@@ -16,12 +16,22 @@ export const LoginContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 8px !important;
-    font-family: "Inter", sans-serif;
+    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 14px;
     line-height: 17px;
     color: #010414;
+    .ant-form-item-label {
+      text-align: left;
+      label {
+        height: 0;
+      }
+    }
+    .ant-form-item-label
+      > label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
+      display: none;
+    }
   }
   .username {
     margin-top: 40px;
@@ -35,25 +45,25 @@ export const LoginContainer = styled.div`
     color: red;
     font-size: 12px;
   }
-`;
+`
 
 export const LoginTitle = styled.div`
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 25px;
   line-height: 30px;
   text-align: center;
   color: #010414;
-`;
+`
 
 export const LoginSubtext = styled.div`
   margin-top: 16px;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
   line-height: 22px;
   text-align: center;
   color: #808189;
-`;
+`

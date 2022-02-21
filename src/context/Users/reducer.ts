@@ -39,7 +39,7 @@ const reducer = (state, action) => {
     case GET_USER_BY_ID: {
       return {
         ...state,
-        user: state.users.users.find(
+        user: state?.users?.find(
           (item) => Number(item.key) === Number(action.payload)
         ),
       }

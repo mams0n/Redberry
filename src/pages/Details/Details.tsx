@@ -5,22 +5,38 @@ import UploadFile from 'components/UploadFile/UploadFile'
 import { useParams } from 'react-router-dom'
 import * as S from './styled'
 import React from 'react'
+import { SSelect, StatusSelectContainer } from 'components/StatusSelect/styled'
+import { SOptions } from 'components/Soptions/styled'
+import CIcon from 'components/Icon/Icon'
+import { Statuses } from 'database/statuses'
 
 const Details = () => {
-    const params = useParams()
-    console.log('params', params)
-    const id = params.id
-    const { state, getUserById } = useUsers()
-    const [userData, setUserData]: any = React.useState()
-    React.useEffect(() => {
+    const { id } = useParams()
+    const { state, getUserById, updateUserStatus } = useUsers()
+
+    const statusOptions = React.useMemo(
+        () =>
+            Statuses.map((status) => ({
+                label: status.status_name,
+                value: status.status_id,
+            })),
+        []
+    );
+
+    const onStatusChange = (id, status) => {
+        updateUserStatus({ userId: id, statusId: status.value as number })
         getUserById(id)
-    }, [])
+    }
+
+    console.log(state.user)
 
     React.useEffect(() => {
-        console.log('state', state)
-        setUserData(state.user)
-    }, [state])
-    console.log('userrrrrrrrrrrrrrrr', userData)
+        getUserById(id)
+    }, [id])
+
+
+
+
     return (
         <S.DetailsWrapper>
             <S.DetailsContainer>
@@ -29,7 +45,26 @@ const Details = () => {
                 </S.NameHeader>
                 <S.StatusInfo>
                     <S.InputBox>
-                        <StatusSelect status={userData?.status || null} userId={userData?.key || null} />
+                        <StatusSelectContainer className={`status-select ${state?.user?.status?.status_type}`}>
+                            <SSelect
+                                style={{ width: 152 }}
+                                placeholder="Search to Select"
+                                optionFilterProp="label"
+                                labelInValue={true}
+                                value={
+                                    {
+                                        value: state?.user?.status?.status_id,
+                                        label: state?.user?.status?.status_name,
+                                    }
+                                }
+                                onChange={(status) => onStatusChange(state?.user?.key, status)}
+                                options={statusOptions}
+                                suffixIcon={<CIcon filename='selectDropdown' />}
+                                dropdownRender={(menu) => {
+                                    return <SOptions>{menu}</SOptions>;
+                                }}
+                            />
+                        </StatusSelectContainer>
                     </S.InputBox>
                     <S.AddInfo>
                         <S.AddedBox>
@@ -46,7 +81,7 @@ const Details = () => {
                     <S.CandidateDetails>
                         <S.FullName>
                             <h5>Full Name</h5>
-                            <p>Zendaya Coleman</p>
+                            <p>{`${state?.user?.first_name} ${state?.user?.last_name}`}</p>
                         </S.FullName>
                         <S.Email>
                             <h5>Email</h5>

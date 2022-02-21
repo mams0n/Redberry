@@ -2,6 +2,8 @@ import React, { Suspense } from 'react';
 import Header from 'components/Header/Header';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import { PageRoutes } from '../../routes/routes'
+import GlobalStyles from '../../app.styled';
+
 
 
 const Wrapper = () => {
@@ -26,17 +28,20 @@ const Wrapper = () => {
 
 
     return (
-        <Router>
-            <Header />
-            <Suspense fallback={null}>
-                <Switch>
-                    {routes}
-                    <Route>
-                        <Redirect to={PageRoutes.Login.route} />
-                    </Route>
-                </Switch>
-            </Suspense>
-        </Router>
+        <>
+            <GlobalStyles />
+            <Router>
+                <Header />
+                <Suspense fallback={null}>
+                    <Switch>
+                        {routes}
+                        <Route>
+                            <Redirect to={PageRoutes.Login.route} />
+                        </Route>
+                    </Switch>
+                </Suspense>
+            </Router>
+        </>
     )
 }
 

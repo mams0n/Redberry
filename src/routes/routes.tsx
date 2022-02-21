@@ -21,7 +21,9 @@ export const PageRoutes = {
         name: 'details',
         Component: lazy(() => import('../pages/Details/Details')),
         options: {},
-        routeProps: {},
+        routeProps: {
+            exact: true
+        },
 
     },
 };

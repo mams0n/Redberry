@@ -7,6 +7,8 @@ import { StatusSelectContainer, SSelect } from '../../components/StatusSelect/st
 import { Statuses } from 'database/statuses'
 import { SOptions } from 'components/Soptions/styled'
 import CIcon from 'components/Icon/Icon'
+import { Dropdown, Tooltip } from 'antd';
+import { STag } from 'components/Tag/styled';
 
 const TableView = () => {
     const { state, updateUserStatus } = useUsers()
@@ -47,11 +49,50 @@ const TableView = () => {
         {
             title: 'Skills',
             dataIndex: 'skills',
-            render: (_, record) => record.skills.map(skill => {
-                return (
-                    <div>{skill.skill_name}</div>
-                )
-            })
+            // render: (_, record) => record.skills.map(skill => {
+            //     return (
+            //         <div>{skill.skill_name}</div>
+            //     )
+            // })
+            render: (_, record) => {
+                if (record.skills.length > 1) {
+                    return (
+                        <>
+                            <Dropdown
+                                placement="topCenter"
+                                overlay={
+                                    <Tooltip
+                                        title=''
+                                        overlayClassName='tooltip-overlay'
+                                        getPopupContainer={(trigger) => {
+                                            console.log(trigger);
+                                            return trigger;
+                                        }}>
+                                        {record.skills.map((skill, index) => {
+                                            return (
+                                                <>
+                                                    {index > 0 && (
+                                                        // <Menu.Item key={skill.skill_id}>
+                                                        <STag>{skill.skill_name}</STag>
+                                                        // </Menu.Item>
+                                                    )}
+                                                </>
+                                            );
+                                        })}
+                                    </Tooltip>
+                                }
+                            >
+                                <div>
+                                    <STag>{record.skills[0].skill_name}</STag>
+                                    <CIcon filename="dots" />
+                                </div>
+                            </Dropdown>
+                        </>
+                    );
+                } else {
+                    return <STag>{record.skills[0].skill_name}</STag>;
+                }
+            },
         },
         {
             title: 'Salary Range',

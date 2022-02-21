@@ -3,6 +3,7 @@ import { Form } from 'antd';
 import { useHistory } from 'react-router-dom';
 import { SInput } from 'components/Input/styled';
 import { SButton } from 'components/Button/styled';
+import { notification } from 'antd';
 import * as S from './styled'
 
 const Login = () => {
@@ -13,11 +14,17 @@ const Login = () => {
 
     const onFinish = (values: any) => {
         if (userName === 'redberry' && password === 'password') {
-            console.log('Login Successful')
+            notification.success({
+                placement: 'bottomLeft',
+                message: 'Login successful',
+            });
             history.push('/tableview')
         }
         else {
-            console.log('Unsuccessful Attempt')
+            notification.error({
+                placement: 'bottomLeft',
+                message: 'Wrong username or password',
+            });
         }
     }
     return (
@@ -25,7 +32,7 @@ const Login = () => {
             form={form}
             onFinish={onFinish}
         >
-            <S.Wrapper>
+            <S.Wrapper className='--------------'>
                 <S.LoginContainer>
                     <S.LoginTitle>
                         Log In
