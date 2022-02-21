@@ -1,10 +1,28 @@
 import styled from 'styled-components'
 
 export const DetailsWrapper = styled.div`
-  padding: 100px;
+  width: 1124px;
+  max-width: 100%;
+  margin: auto;
 `
 
 export const DetailsContainer = styled.div``
+
+export const SubHeader = styled.div`
+  h4 {
+    padding: 56px 0px 24px 28px;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #010414;
+  }
+  h1 {
+    padding-top: 24px;
+    margin: 0;
+    padding-bottom: 100px;
+  }
+`
 
 export const NameHeader = styled.div`
   width: 100%;
@@ -87,13 +105,14 @@ export const CandidateDetails = styled.div`
   font-style: normal;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 15px;
   h5 {
     font-weight: bold;
     font-size: 14px;
     line-height: 17px;
     color: #010414;
     padding-bottom: 3px;
+    margin: 0;
   }
   p {
     font-weight: normal;

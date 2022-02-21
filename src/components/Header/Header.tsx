@@ -6,10 +6,12 @@ const Header = () => {
     const location = useLocation();
 
     return (
-        <S.Header>
-            <CIcon filename='logo' onClick={{}} />
-            {location.pathname !== '/' && <h2>Recruitement Pipeline</h2>}
-        </S.Header>
+        <S.HeaderContainer>
+            <S.Header>
+                <CIcon filename='logo' onClick={{}} />
+                {location.pathname !== '/' && <h2>Recruitement Pipeline</h2>}
+            </S.Header>
+        </S.HeaderContainer>
     )
 }
 

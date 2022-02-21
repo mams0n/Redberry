@@ -27,14 +27,6 @@ export const STable = styled(Table)`
     th:last-child {
       width: 260px;
     }
-    tr {
-      td {
-        padding: 18px 32px;
-      }
-      td:last-child {
-        padding: 10px 32px;
-      }
-    }
     a {
       color: inherit;
     }

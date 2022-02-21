@@ -1,6 +1,8 @@
-import styled from "styled-components";
-import { Table } from "antd";
+import styled from 'styled-components'
+import { Table } from 'antd'
 
 export const Wrapper = styled.div`
-  padding: 40px 108px;
-`;
+  width: 1124px;
+  max-width: 100%;
+  margin: auto;
+`

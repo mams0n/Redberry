@@ -5,7 +5,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { StatusSelectContainer, SSelect } from '../../components/StatusSelect/styled'
 import { Statuses } from 'database/statuses'
-import { SOptions } from 'components/Soptions/styled'
+import { SOptions } from 'components/SOptions/styled'
 import CIcon from 'components/Icon/Icon'
 import { Dropdown, Tooltip } from 'antd';
 import { STag } from 'components/Tag/styled';
@@ -40,7 +40,7 @@ const TableView = () => {
         {
             title: 'Contant',
             dataIndex: 'contact',
-            render: (_, record) => record.phone_number
+            render: (_, record) => record.contact
         },
         {
             title: 'Experience',
@@ -49,11 +49,6 @@ const TableView = () => {
         {
             title: 'Skills',
             dataIndex: 'skills',
-            // render: (_, record) => record.skills.map(skill => {
-            //     return (
-            //         <div>{skill.skill_name}</div>
-            //     )
-            // })
             render: (_, record) => {
                 if (record.skills.length > 1) {
                     return (
@@ -64,10 +59,7 @@ const TableView = () => {
                                     <Tooltip
                                         title=''
                                         overlayClassName='tooltip-overlay'
-                                        getPopupContainer={(trigger) => {
-                                            console.log(trigger);
-                                            return trigger;
-                                        }}>
+                                    >
                                         {record.skills.map((skill, index) => {
                                             return (
                                                 <>

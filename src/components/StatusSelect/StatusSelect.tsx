@@ -3,7 +3,7 @@ import { SSelect } from './styled'
 import React from 'react'
 import CIcon from 'components/Icon/Icon'
 import { Statuses } from 'database/statuses'
-import { SOptions } from 'components/Soptions/styled'
+import { SOptions } from 'components/SOptions/styled'
 import { useUsers } from 'context/Users';
 import * as S from './styled'
 

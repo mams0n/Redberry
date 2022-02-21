@@ -1,4 +1,3 @@
-import StatusSelect from 'components/StatusSelect/StatusSelect'
 import { STag } from 'components/Tag/styled'
 import { useUsers } from 'context/Users'
 import UploadFile from 'components/UploadFile/UploadFile'
@@ -6,9 +5,10 @@ import { useParams } from 'react-router-dom'
 import * as S from './styled'
 import React from 'react'
 import { SSelect, StatusSelectContainer } from 'components/StatusSelect/styled'
-import { SOptions } from 'components/Soptions/styled'
+import { SOptions } from 'components/SOptions/styled'
 import CIcon from 'components/Icon/Icon'
 import { Statuses } from 'database/statuses'
+import EditableInput from 'components/EditableInput/EditableInput'
 
 const Details = () => {
     const { id } = useParams()
@@ -35,13 +35,17 @@ const Details = () => {
     }, [id])
 
 
-
+    console.log(state?.user?.skills, 'state?.user?.skills')
 
     return (
         <S.DetailsWrapper>
+            <S.SubHeader>
+                <h4>Recruitement Pipeline</h4>
+                <h1>Candidate Details</h1>
+            </S.SubHeader>
             <S.DetailsContainer>
                 <S.NameHeader>
-                    Zendaya Coleman
+                    {`${state?.user?.first_name} ${state?.user?.last_name}`}
                 </S.NameHeader>
                 <S.StatusInfo>
                     <S.InputBox>
@@ -81,36 +85,35 @@ const Details = () => {
                     <S.CandidateDetails>
                         <S.FullName>
                             <h5>Full Name</h5>
-                            <p>{`${state?.user?.first_name} ${state?.user?.last_name}`}</p>
+                            <EditableInput value={`${state?.user?.first_name} ${state?.user?.last_name}`} />
                         </S.FullName>
                         <S.Email>
                             <h5>Email</h5>
-                            <p>davitchichinashvili@gmail.com</p>
+                            <EditableInput value={state?.user?.contact} />
                         </S.Email>
                         <S.PhoneNumber>
                             <h5>Phone Number</h5>
-                            <p>+995 577 777 077</p>
+                            <EditableInput value={state?.user?.phone_number} />
                         </S.PhoneNumber>
                         <S.Salary>
                             <h5>Salary</h5>
-                            <p>3,000 - 3,500</p>
+                            <EditableInput value={state?.user?.salary_range} />
                         </S.Salary>
                         <S.Skills>
                             <h5>Skills</h5>
                             <S.TagContainer>
-                                <STag>MySQL</STag>
-                                <STag>Flatter</STag>
-                                <STag>Laravel</STag>
-                                <STag>CSS</STag>
+                                {state?.user?.skills?.map((skill) => (
+                                    <STag key={skill.skill_id}>{skill.skill_name}</STag>
+                                ))}
                             </S.TagContainer>
                         </S.Skills>
                         <S.Seniority>
                             <h5>Seniority</h5>
-                            <p>Junior</p>
+                            <EditableInput value={state?.user?.seniority} />
                         </S.Seniority>
                         <S.Experience>
                             <h5>Years of experience</h5>
-                            <p>10</p>
+                            <EditableInput value={state?.user?.experience} />
                         </S.Experience>
                         <S.UploadCV>
                             <h5>CV</h5>

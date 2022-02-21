@@ -1,10 +1,15 @@
 import styled from 'styled-components'
 
-export const Header = styled.div`
-  width: 100%;
-  height: 80px;
+export const HeaderContainer = styled.div`
   border-bottom: 1px solid #f6f6f7;
-  padding: 25px 108px;
+`
+
+export const Header = styled.div`
+  width: 1124px;
+  max-width: 100%;
+  margin: auto;
+  height: 80px;
+  padding: 25px 0px;
   display: flex;
   gap: 90px;
   svg {
