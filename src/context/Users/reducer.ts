@@ -1,8 +1,9 @@
 import { Statuses } from 'database/statuses'
 import { Users } from 'database/users'
-export const GET_USERS = 'GET_USERS'
+// export const GET_USERS = 'GET_USERS'
 export const UPDATE_USER_STATUSES = 'UPDATE_USER_STATUSES'
 export const GET_USER_BY_ID = 'GET_USER_BY_ID'
+export const SEARCH_USER = 'SEARCH_USER'
 
 export const initialState: any = {
   users: Users,
@@ -11,13 +12,6 @@ export const initialState: any = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case GET_USERS: {
-      return {
-        ...state,
-        users: action.payload,
-      }
-    }
-
     case UPDATE_USER_STATUSES: {
       return {
         ...state,
@@ -33,6 +27,24 @@ const reducer = (state, action) => {
           }
           return item
         }),
+      }
+    }
+
+    case SEARCH_USER: {
+      let lowerCaseKeyword = action.payload
+      let searchedUsers = Users?.filter((user) => {
+        if (
+          Object.values(user)
+            .toString()
+            .toLowerCase()
+            .includes(lowerCaseKeyword)
+        ) {
+          return user
+        }
+      })
+      return {
+        ...state,
+        users: searchedUsers,
       }
     }
 

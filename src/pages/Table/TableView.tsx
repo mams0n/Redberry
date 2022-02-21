@@ -9,9 +9,10 @@ import { SOptions } from 'components/SOptions/styled'
 import CIcon from 'components/Icon/Icon'
 import { Dropdown, Tooltip } from 'antd';
 import { STag } from 'components/Tag/styled';
+import { SInput } from 'components/Input/styled';
 
 const TableView = () => {
-    const { state, updateUserStatus } = useUsers()
+    const { state, updateUserStatus, searchUsers } = useUsers()
     const [data, setData] = React.useState(state.users)
 
     const statusOptions = React.useMemo(
@@ -30,6 +31,10 @@ const TableView = () => {
     React.useEffect(() => {
         setData(state.users)
     }, [state.users])
+
+    const handleSearch = (event) => {
+        searchUsers(event.target.value);
+    };
 
     const columns = [
         {
@@ -122,6 +127,7 @@ const TableView = () => {
 
     return (
         <S.Wrapper>
+            <SInput placeholder="Search" onChange={handleSearch} />
             <STable
                 pagination={false}
                 columns={columns}

@@ -124,7 +124,6 @@ export const CandidateDetails = styled.div`
 
 export const CandidateTimeline = styled.div`
   width: 100%;
-  background: blue;
   padding: 20px 40px;
 `
 
@@ -152,3 +151,95 @@ export const Seniority = styled.div``
 export const Experience = styled.div``
 
 export const UploadCV = styled.div``
+
+export const AddedToCandidateList = styled.div`
+  border-bottom: 1px dashed #e6e6e7;
+`
+
+export const AddedCandidate = styled.div`
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  color: #808189;
+  padding-bottom: 8px;
+`
+
+export const AddedCandidateTime = styled.div`
+  font-style: italic;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  color: #808189;
+  padding-bottom: 20px;
+`
+
+export const StatusChangeContainer = styled.div`
+  padding: 20px 0;
+`
+
+export const StatusLabels = styled.div`
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  color: #808189;
+`
+
+export const LabelsTime = styled.div`
+  font-style: italic;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  color: #808189;
+  padding-top: 8px;
+`
+
+export const NameCircleContainer = styled.div`
+  display: flex;
+  gap: 8px;
+`
+
+export const NameCircle = styled.div`
+  width: 32px;
+  height: 32px;
+  background: #efec10;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  place-items: center;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 17px;
+  color: #010414;
+`
+
+export const CircleFullName = styled.div`
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  color: #010414;
+  align-items: center;
+  display: flex;
+`
+
+export const CandidateText = styled.div`
+  padding: 16px 0 20px;
+  border-bottom: 1px dashed #e6e6e7;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 22px;
+  color: #010414;
+`
+
+export const CommentInput = styled.div`
+  margin-top: 20px;
+  button {
+    width: 128px;
+    height: 40px;
+    border-radius: 8px;
+  }
+`

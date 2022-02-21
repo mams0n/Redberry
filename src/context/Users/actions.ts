@@ -1,17 +1,4 @@
-import { Users } from 'database/users'
-import { GET_USERS, UPDATE_USER_STATUSES, GET_USER_BY_ID } from './reducer'
-
-export const fetchUsers = (dispatch) => async () => {
-  try {
-    const users = await Users
-    dispatch({
-      type: GET_USERS,
-      payload: users,
-    })
-  } catch (err) {
-    console.error(err)
-  }
-}
+import { UPDATE_USER_STATUSES, GET_USER_BY_ID, SEARCH_USER } from './reducer'
 
 export const fetchUserById = (dispatch) => async (id) => {
   try {
@@ -29,6 +16,17 @@ export const updateUserStatuses = (dispatch) => async (data) => {
     dispatch({
       type: UPDATE_USER_STATUSES,
       payload: data,
+    })
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+export const searchUser = (dispatch) => async (keyword) => {
+  try {
+    dispatch({
+      type: SEARCH_USER,
+      payload: keyword,
     })
   } catch (err) {
     console.error(err)

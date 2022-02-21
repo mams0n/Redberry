@@ -9,10 +9,15 @@ import { SOptions } from 'components/SOptions/styled'
 import CIcon from 'components/Icon/Icon'
 import { Statuses } from 'database/statuses'
 import EditableInput from 'components/EditableInput/EditableInput'
+import { SInput } from 'components/Input/styled'
+import { SButton } from 'components/Button/styled'
+import { notification } from 'antd'
 
 const Details = () => {
     const { id } = useParams()
     const { state, getUserById, updateUserStatus } = useUsers()
+    const fullName = `${state?.user?.first_name} ${state?.user?.last_name}`
+    const [commentText, setCommentText] = React.useState('')
 
     const statusOptions = React.useMemo(
         () =>
@@ -27,15 +32,17 @@ const Details = () => {
         updateUserStatus({ userId: id, statusId: status.value as number })
         getUserById(id)
     }
-
-    console.log(state.user)
+    const onCommentClick = () => {
+        setCommentText('')
+        notification.success({
+            placement: 'bottomLeft',
+            message: 'Comment added successfully',
+        });
+    }
 
     React.useEffect(() => {
         getUserById(id)
     }, [id])
-
-
-    console.log(state?.user?.skills, 'state?.user?.skills')
 
     return (
         <S.DetailsWrapper>
@@ -45,7 +52,7 @@ const Details = () => {
             </S.SubHeader>
             <S.DetailsContainer>
                 <S.NameHeader>
-                    {`${state?.user?.first_name} ${state?.user?.last_name}`}
+                    {fullName}
                 </S.NameHeader>
                 <S.StatusInfo>
                     <S.InputBox>
@@ -85,7 +92,7 @@ const Details = () => {
                     <S.CandidateDetails>
                         <S.FullName>
                             <h5>Full Name</h5>
-                            <EditableInput value={`${state?.user?.first_name} ${state?.user?.last_name}`} />
+                            <EditableInput value={fullName} />
                         </S.FullName>
                         <S.Email>
                             <h5>Email</h5>
@@ -121,7 +128,69 @@ const Details = () => {
                         </S.UploadCV>
                     </S.CandidateDetails>
                     <S.CandidateTimeline>
-                        dsjkaldjksajdlksajdlla
+                        <S.AddedToCandidateList>
+                            <S.AddedCandidate>
+                                hdhsada
+                            </S.AddedCandidate>
+                            <S.AddedCandidateTime>
+                                Nov 3, 2021, 2:29PM
+                            </S.AddedCandidateTime>
+                        </S.AddedToCandidateList>
+                        <S.StatusChangeContainer>
+                            <S.StatusLabels>
+                                You changed status from     first contact to     interview
+                            </S.StatusLabels>
+                            <S.LabelsTime>
+                                Nov 7, 2021, 11:09PM
+                            </S.LabelsTime>
+                        </S.StatusChangeContainer>
+                        <S.NameCircleContainer>
+                            <S.NameCircle>
+                                {fullName.charAt(0)}
+                            </S.NameCircle>
+                            <S.CircleFullName>
+                                {fullName}
+                            </S.CircleFullName>
+                        </S.NameCircleContainer>
+                        <S.CandidateText>
+                            The Standard and Poor's 500, or simply the S&P 500, is a stock market index tracking the performance of 500 large companies listed on stock exchanges in the United States. It is one of the most commonly followed equity indices
+                        </S.CandidateText>
+                        <S.StatusChangeContainer>
+                            <S.StatusLabels>
+                                You changed status from     interview to     Rejected
+                            </S.StatusLabels>
+                            <S.LabelsTime>
+                                Nov 8, 2021, 1:09PM
+                            </S.LabelsTime>
+                        </S.StatusChangeContainer>
+                        <S.NameCircleContainer>
+                            <S.NameCircle>
+                                {fullName.charAt(0)}
+                            </S.NameCircle>
+                            <S.CircleFullName>
+                                {fullName}
+                            </S.CircleFullName>
+                        </S.NameCircleContainer>
+                        <S.CandidateText>
+                            The Standard and Poor's 500, or simply the S&P 500.
+                        </S.CandidateText>
+                        <S.StatusChangeContainer>
+                            <S.StatusLabels>
+                                You changed phone number +995 597 321 321 to +995 577 111 000
+                            </S.StatusLabels>
+                            <S.LabelsTime>
+                                Nov 28, 2021, 1:09PM
+                            </S.LabelsTime>
+                        </S.StatusChangeContainer>
+                        <S.CommentInput>
+                            <SInput
+                                type='text'
+                                placeholder='Type to comment'
+                                suffix={<SButton onClick={onCommentClick}>Comment</SButton>}
+                                onChange={(event) => setCommentText(event.target.value)}
+                                value={commentText}
+                            />
+                        </S.CommentInput>
                     </S.CandidateTimeline>
                 </S.CandidateInfoContainer>
             </S.DetailsContainer>
