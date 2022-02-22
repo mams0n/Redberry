@@ -7,9 +7,6 @@ import { SOptions } from 'components/SOptions/styled'
 import { useUsers } from 'context/Users';
 import * as S from './styled'
 
-
-
-
 const StatusSelect = (props) => {
   const { updateUserStatus } = useUsers()
   const options = React.useMemo(

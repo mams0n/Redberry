@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { Table } from 'antd'
 
 export const STable = styled(Table)`
+  padding: 20px 0px 40px 0px;
   .ant-table {
     .ant-table-container {
       border-radius: 8px !important;

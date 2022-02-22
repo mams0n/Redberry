@@ -69,9 +69,7 @@ const TableView = () => {
                                             return (
                                                 <>
                                                     {index > 0 && (
-                                                        // <Menu.Item key={skill.skill_id}>
                                                         <STag>{skill.skill_name}</STag>
-                                                        // </Menu.Item>
                                                     )}
                                                 </>
                                             );
@@ -127,7 +125,13 @@ const TableView = () => {
 
     return (
         <S.Wrapper>
-            <SInput placeholder="Search" onChange={handleSearch} />
+            <S.SubHeader>
+                Recruitement Pipeline
+            </S.SubHeader>
+            <S.FilterContainer>
+                <SInput placeholder="Search with name, last name, skills, position, phone and email" onChange={handleSearch} />
+                <SSelect placeholder="Filter Candidates by" />
+            </S.FilterContainer>
             <STable
                 pagination={false}
                 columns={columns}
@@ -136,7 +140,5 @@ const TableView = () => {
         </S.Wrapper>
     )
 }
-
-
 
 export default TableView

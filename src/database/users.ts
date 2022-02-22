@@ -19,10 +19,7 @@ export const Users = [
     },
     phone_number: '+995 599 222 220',
     seniority: 'junior',
-    cv: {
-      link: 'https://pjcj.net/cv/cv.pdf',
-      title: 'test_cv',
-    },
+    cv: {},
   },
   {
     key: 2,
@@ -52,10 +49,7 @@ export const Users = [
     },
     phone_number: '+995 125 485',
     seniority: 'senior',
-    cv: {
-      link: 'https://pjcj.net/cv/cv.pdf',
-      title: 'test_cv',
-    },
+    cv: {},
   },
   {
     key: 3,
@@ -81,10 +75,7 @@ export const Users = [
     },
     phone_number: '+995 555 256 475',
     seniority: 'senior',
-    cv: {
-      link: 'https://pjcj.net/cv/cv.pdf',
-      title: 'test_cv',
-    },
+    cv: {},
   },
   {
     key: 4,
@@ -106,10 +97,7 @@ export const Users = [
     },
     phone_number: '+995 591 97 97 97',
     seniority: 'junior',
-    cv: {
-      link: 'https://pjcj.net/cv/cv.pdf',
-      title: 'test_cv',
-    },
+    cv: {},
   },
   {
     key: 5,
@@ -135,10 +123,7 @@ export const Users = [
     },
     phone_number: '+995 598 80 80 06',
     seniority: 'middle',
-    cv: {
-      link: 'https://pjcj.net/cv/cv.pdf',
-      title: 'test_cv',
-    },
+    cv: {},
   },
   {
     key: 6,
@@ -160,10 +145,7 @@ export const Users = [
     },
     phone_number: '+995 577 955 633',
     seniority: 'junior',
-    cv: {
-      link: 'https://pjcj.net/cv/cv.pdf',
-      title: 'test_cv',
-    },
+    cv: {},
   },
   {
     key: 7,
@@ -197,10 +179,7 @@ export const Users = [
     },
     phone_number: '+995 551 115 551',
     seniority: 'senior',
-    cv: {
-      link: 'https://pjcj.net/cv/cv.pdf',
-      title: 'test_cv',
-    },
+    cv: {},
   },
   {
     key: 8,
@@ -222,9 +201,6 @@ export const Users = [
     },
     phone_number: '+995 568 954 111',
     seniority: 'junior',
-    cv: {
-      link: 'https://pjcj.net/cv/cv.pdf',
-      title: 'test_cv',
-    },
+    cv: {},
   },
 ]

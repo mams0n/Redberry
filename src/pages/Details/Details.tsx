@@ -138,7 +138,7 @@ const Details = () => {
                         </S.AddedToCandidateList>
                         <S.StatusChangeContainer>
                             <S.StatusLabels>
-                                You changed status from     first contact to     interview
+                                You changed status from <CIcon filename='green' /> first contact to <CIcon filename='blue' /> interview
                             </S.StatusLabels>
                             <S.LabelsTime>
                                 Nov 7, 2021, 11:09PM
@@ -157,7 +157,7 @@ const Details = () => {
                         </S.CandidateText>
                         <S.StatusChangeContainer>
                             <S.StatusLabels>
-                                You changed status from     interview to     Rejected
+                                You changed status from <CIcon filename='blue' /> interview to <CIcon filename='red' /> Rejected
                             </S.StatusLabels>
                             <S.LabelsTime>
                                 Nov 8, 2021, 1:09PM

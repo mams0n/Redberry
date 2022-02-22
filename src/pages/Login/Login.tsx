@@ -32,7 +32,7 @@ const Login = () => {
             form={form}
             onFinish={onFinish}
         >
-            <S.Wrapper className='--------------'>
+            <S.Wrapper>
                 <S.LoginContainer>
                     <S.LoginTitle>
                         Log In

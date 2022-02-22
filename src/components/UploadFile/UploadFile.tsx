@@ -5,7 +5,7 @@ import * as S from './styled'
 const UploadFile = () => {
     return (
         <S.UploadFileContainer>
-            <Dragger className='---------------'>
+            <Dragger>
                 <S.DraggerInner>
                     <S.DragInfoText>
                         Drag files here to upload

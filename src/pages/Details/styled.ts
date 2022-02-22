@@ -6,7 +6,9 @@ export const DetailsWrapper = styled.div`
   margin: auto;
 `
 
-export const DetailsContainer = styled.div``
+export const DetailsContainer = styled.div`
+  padding: 0 0 40px 0;
+`
 
 export const SubHeader = styled.div`
   h4 {
@@ -21,6 +23,11 @@ export const SubHeader = styled.div`
     padding-top: 24px;
     margin: 0;
     padding-bottom: 100px;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 25px;
+    line-height: 30px;
+    color: #010414;
   }
 `
 
