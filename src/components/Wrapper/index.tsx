@@ -3,6 +3,7 @@ import Header from 'components/Header/Header';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import { PageRoutes } from '../../routes/routes'
 import GlobalStyles from '../../app.styled';
+import Footer from 'components/Footer/Footer';
 
 const Wrapper = () => {
     const routes = React.useMemo(
@@ -30,10 +31,11 @@ const Wrapper = () => {
                     <Switch>
                         {routes}
                         <Route>
-                            <Redirect to={PageRoutes.Login.route} />
+                            <Redirect to={PageRoutes.MainPage.route} />
                         </Route>
                     </Switch>
                 </Suspense>
+                <Footer />
             </Router>
         </>
     )

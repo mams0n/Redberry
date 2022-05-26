@@ -8,8 +8,19 @@ const Header = () => {
     return (
         <S.HeaderContainer>
             <S.Header>
-                <CIcon filename='logo' onClick={{}} />
-                {location.pathname !== '/' && <h2>Recruitement Pipeline</h2>}
+                {/* <CIcon filename='logo' onClick={{}} /> */}
+                <img src='https://instashop.com/assets/images/logos/Splash02.png' alt='' />
+                <S.Moto>
+                    Shop Here / Be Cool
+                </S.Moto>
+                <S.SocialContainer>
+                    <S.FacebookBox>
+                        <CIcon filename='facebook' />
+                    </S.FacebookBox>
+                    <S.InstagramBox>
+                        <CIcon filename='instagram' />
+                    </S.InstagramBox>
+                </S.SocialContainer>
             </S.Header>
         </S.HeaderContainer>
     )

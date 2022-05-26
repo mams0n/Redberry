@@ -1,17 +1,10 @@
 import { lazy } from 'react';
 
 export const PageRoutes = {
-    Login: {
-        route: '/login',
-        name: 'login',
-        Component: lazy(() => import('../pages/Login/Login')),
-        options: {},
-        routeProps: {},
-    },
-    TableView: {
-        route: '/tableview',
-        name: 'tableview',
-        Component: lazy(() => import('../pages/Table/TableView')),
+    MainPage: {
+        route: '/main',
+        name: 'main',
+        Component: lazy(() => import('../pages/Main/Main')),
         options: {},
         routeProps: {},
     },

@@ -1,7 +1,7 @@
 import Wrapper from 'components/Wrapper';
 import './App.css';
 import { ThemeProvider } from 'styled-components'
-import UsersProvider from 'context/Users';
+import CategoriesProvider from 'context/Categories';
 import React from 'react'
 
 function App() {
@@ -10,9 +10,9 @@ function App() {
 
   return (
     <ThemeProvider theme={{ mode: 'default' }}>
-      <UsersProvider>
+      <CategoriesProvider>
         {children}
-      </UsersProvider>
+      </CategoriesProvider>
     </ThemeProvider>
 
   );
